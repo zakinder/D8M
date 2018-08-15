@@ -157,17 +157,17 @@ proc create_root_design { parentCell } {
   set DDR [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 DDR ]
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
   set camera_i2c [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 camera_i2c ]
-  set camera_pwdn_n [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 camera_pwdn_n ]
-  set mipi_cs_n [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 mipi_cs_n ]
   set mipi_i2c [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 mipi_i2c ]
-  set mipi_reset_n [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 mipi_reset_n ]
 
   # Create ports
   set MIPI_PIXEL_CLK [ create_bd_port -dir I -type clk MIPI_PIXEL_CLK ]
   set MIPI_PIXEL_D [ create_bd_port -dir I -from 9 -to 0 -type data MIPI_PIXEL_D ]
   set MIPI_PIXEL_HS [ create_bd_port -dir I MIPI_PIXEL_HS ]
   set MIPI_PIXEL_VS [ create_bd_port -dir I MIPI_PIXEL_VS ]
+  set camera_pwdn_n [ create_bd_port -dir O -from 0 -to 0 camera_pwdn_n ]
+  set mipi_cs_n [ create_bd_port -dir O -from 0 -to 0 mipi_cs_n ]
   set mipi_refclk [ create_bd_port -dir O mipi_refclk ]
+  set mipi_reset_n [ create_bd_port -dir O -from 0 -to 0 mipi_reset_n ]
 
   # Create instance: D8M_RETRIGGER_0, and set properties
   set D8M_RETRIGGER_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:D8M_RETRIGGER:1.0 D8M_RETRIGGER_0 ]
@@ -178,7 +178,7 @@ proc create_root_design { parentCell } {
 CONFIG.C_DATA_DEPTH {8192} \
 CONFIG.C_ENABLE_ILA_AXI_MON {false} \
 CONFIG.C_MONITOR_TYPE {Native} \
-CONFIG.C_NUM_OF_PROBES {3} \
+CONFIG.C_NUM_OF_PROBES {9} \
 CONFIG.C_PROBE0_WIDTH {12} \
  ] $MIPI_ILA
 
@@ -267,9 +267,6 @@ CONFIG.NUM_MI {5} \
   # Create interface connections
   connect_bd_intf_net -intf_net axi_iic_0_IIC [get_bd_intf_ports mipi_i2c] [get_bd_intf_pins mipi_i2c/IIC]
   connect_bd_intf_net -intf_net axi_iic_0_IIC1 [get_bd_intf_ports camera_i2c] [get_bd_intf_pins camera_i2c/IIC]
-  connect_bd_intf_net -intf_net camera_pwdn1_GPIO [get_bd_intf_ports mipi_reset_n] [get_bd_intf_pins mipi_reset/GPIO]
-  connect_bd_intf_net -intf_net camera_pwdn_GPIO [get_bd_intf_ports camera_pwdn_n] [get_bd_intf_pins camera_pwdn/GPIO]
-  connect_bd_intf_net -intf_net gpio_GPIO [get_bd_intf_ports mipi_cs_n] [get_bd_intf_pins mipi_cs/GPIO]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
@@ -283,11 +280,14 @@ CONFIG.NUM_MI {5} \
   connect_bd_net -net D8M_RETRIGGER_0_D5M_Data_o [get_bd_pins D8M_RETRIGGER_0/D5M_Data_o] [get_bd_pins MIPI_ILA/probe0]
   connect_bd_net -net D8M_RETRIGGER_0_HS_o [get_bd_pins D8M_RETRIGGER_0/HS_o] [get_bd_pins MIPI_ILA/probe1]
   connect_bd_net -net D8M_RETRIGGER_0_VS_o [get_bd_pins D8M_RETRIGGER_0/VS_o] [get_bd_pins MIPI_ILA/probe2]
-  connect_bd_net -net MIPI_PIXEL_CLK_1 [get_bd_ports MIPI_PIXEL_CLK] [get_bd_pins D8M_RETRIGGER_0/D5M_Pixel_CLK]
+  connect_bd_net -net MIPI_PIXEL_CLK_1 [get_bd_ports MIPI_PIXEL_CLK] [get_bd_pins D8M_RETRIGGER_0/D5M_Pixel_CLK] [get_bd_pins MIPI_ILA/probe6]
   connect_bd_net -net MIPI_PIXEL_D_1 [get_bd_ports MIPI_PIXEL_D] [get_bd_pins D8M_RETRIGGER_0/D5M_Data_i]
-  connect_bd_net -net MIPI_PIXEL_HS_1 [get_bd_ports MIPI_PIXEL_HS] [get_bd_pins D8M_RETRIGGER_0/HS_i]
-  connect_bd_net -net MIPI_PIXEL_VS_1 [get_bd_ports MIPI_PIXEL_VS] [get_bd_pins D8M_RETRIGGER_0/VS_i]
+  connect_bd_net -net MIPI_PIXEL_HS_1 [get_bd_ports MIPI_PIXEL_HS] [get_bd_pins D8M_RETRIGGER_0/HS_i] [get_bd_pins MIPI_ILA/probe7]
+  connect_bd_net -net MIPI_PIXEL_VS_1 [get_bd_ports MIPI_PIXEL_VS] [get_bd_pins D8M_RETRIGGER_0/VS_i] [get_bd_pins MIPI_ILA/probe8]
+  connect_bd_net -net camera_pwdn_gpio_io_o [get_bd_ports camera_pwdn_n] [get_bd_pins camera_pwdn/gpio_io_o]
   connect_bd_net -net clk_wiz_1_clk_out1 [get_bd_ports mipi_refclk] [get_bd_pins clk_wiz_1/clk_out1]
+  connect_bd_net -net mipi_cs_gpio_io_o [get_bd_ports mipi_cs_n] [get_bd_pins MIPI_ILA/probe3] [get_bd_pins MIPI_ILA/probe4] [get_bd_pins mipi_cs/gpio_io_o]
+  connect_bd_net -net mipi_reset_gpio_io_o [get_bd_ports mipi_reset_n] [get_bd_pins MIPI_ILA/probe5] [get_bd_pins mipi_reset/gpio_io_o]
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins MIPI_ILA/clk] [get_bd_pins processing_system7_0/FCLK_CLK2]
   connect_bd_net -net processing_system7_0_FCLK_CLK3 [get_bd_pins camera_i2c/s_axi_aclk] [get_bd_pins camera_pwdn/s_axi_aclk] [get_bd_pins mipi_cs/s_axi_aclk] [get_bd_pins mipi_i2c/s_axi_aclk] [get_bd_pins mipi_reset/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK4 [get_bd_pins clk_wiz_1/clk_in1] [get_bd_pins processing_system7_0/FCLK_CLK1]

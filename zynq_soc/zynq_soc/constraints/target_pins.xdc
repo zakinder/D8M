@@ -1,11 +1,4 @@
-
-# ----------------------------------------------------------------------------
-# FMC Expansion Connector - Bank 34
-# ---------------------------------------------------------------------------- 
 set_property PACKAGE_PIN J20 [get_ports mipi_refclk]
-# ----------------------------------------------------------------------------
-# FMC Expansion Connector - Bank 35
-# ---------------------------------------------------------------------------- 
 set_property PACKAGE_PIN F19 [get_ports {mipi_cs_n[0]}]
 set_property PACKAGE_PIN G21 [get_ports mipi_i2c_sda_io]
 set_property PACKAGE_PIN G20 [get_ports mipi_i2c_scl_io]
@@ -23,15 +16,9 @@ set_property PACKAGE_PIN P21 [get_ports {MIPI_PIXEL_D[0]}]
 set_property PACKAGE_PIN P20 [get_ports {MIPI_PIXEL_D[3]}]
 set_property PACKAGE_PIN K20 [get_ports MIPI_PIXEL_HS]
 set_property PACKAGE_PIN K19 [get_ports MIPI_PIXEL_VS]
-#camera
 set_property PACKAGE_PIN C22 [get_ports camera_i2c_sda_io]
 set_property PACKAGE_PIN D22 [get_ports camera_i2c_scl_io]
 set_property PACKAGE_PIN D21 [get_ports {camera_pwdn_n[0]}]
-
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets MIPI_PIXEL_CLK_IBUF]
-
 set_property IOSTANDARD LVCMOS25 [get_ports -of_objects [get_iobanks 34]];
 set_property IOSTANDARD LVCMOS25 [get_ports -of_objects [get_iobanks 35]];
-
-
-
