@@ -1,0 +1,836 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html lang='en-US' xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<style type='text/css'>
+  pre.sunburst{
+  padding: 10px;
+  font-size: 13px;
+  font-family: Monaco, monospace;}
+  pre.sunburst {
+  padding: 10px;
+  font-size: 13px;
+  font-family: Monaco, monospace;}
+   pre.sunburst  {
+   padding: 10px;
+   font-size: 13px;
+   font-family: Monaco, monospace;}
+   pre.sunburst  .DiffInserted {
+   background-color: #253B22;
+   color: #F8F8F8;}
+   pre.sunburst  .DiffHeader {
+   background-color: #0E2231;
+   color: #F8F8F8;
+   font-style: italic;}
+   pre.sunburst  .CssPropertyValue {
+   color: #F9EE98;}
+   pre.sunburst  .CCCPreprocessorDirective {
+   color: #AFC4DB;}
+   pre.sunburst  .Constant {
+   color: #3387CC;}
+   pre.sunburst  .DiffChanged {
+   background-color: #4A410D;
+   color: #F8F8F8;}
+   pre.sunburst  .Support {
+   color: #9B859D;}
+   pre.sunburst  .MarkupList {
+   color: #E1D4B9;}
+   pre.sunburst  .CssConstructorArgument {
+   color: #8F9D6A;}
+   pre.sunburst  .Storage {
+   color: #99CF50;}
+   pre.sunburst  .line-numbers {
+   background-color: #DDF0FF;
+   color: #000000;}
+   pre.sunburst  .CssClass {
+   color: #9B703F;}
+   pre.sunburst  .StringConstant {
+   color: #DDF2A4;}
+   pre.sunburst  .MarkupSeparator {
+   background-color: #242424;
+   color: #60A633;}
+   pre.sunburst  .MarkupUnderline {
+   text-decoration: underline;
+   color: #E18964;}
+   pre.sunburst  .CssAtRule {
+   color: #8693A5;}
+   pre.sunburst  .MetaTagInline {
+   color: #E0C589;}
+   pre.sunburst  .JEntityNameType {
+   text-decoration: underline;}
+   pre.sunburst  .LogEntryError {
+   background-color: #751012;}
+   pre.sunburst  .MarkupHeading {
+   background-color: #632D04;
+   color: #FEDCC5;}
+   pre.sunburst  .CssTagName {
+   color: #CDA869;}
+   pre.sunburst  .SupportConstant {
+   color: #CF6A4C;}
+   pre.sunburst  .MarkupQuote {
+   background-color: #ECD091;
+   color: #E1D4B9;
+   font-style: italic;}
+   pre.sunburst  .DiffDeleted {
+   background-color: #420E09;
+   color: #F8F8F8;}
+   pre.sunburst  .CCCPreprocessorLine {
+   color: #8996A8;}
+   pre.sunburst  .StringRegexpSpecial {
+   color: #CF7D34;}
+   pre.sunburst  .EmbeddedSourceBright {
+   background-color: #292929;}
+   pre.sunburst  .InvalidIllegal {
+   background-color: #150B15;
+   color: #FD5FF1;}
+   pre.sunburst  .MarkupRaw {
+   background-color: #ABADB4;
+   color: #578BB3;}
+   pre.sunburst  .SupportFunction {
+   color: #DAD085;}
+   pre.sunburst  .CssAdditionalConstants {
+   color: #DD7B3B;}
+   pre.sunburst  .MetaTagAll {
+   color: #89BDFF;}
+   pre.sunburst  .StringRegexp {
+   color: #E9C062;}
+   pre.sunburst  .StringEmbeddedSource {
+   color: #DAEFA3;}
+   pre.sunburst  .EntityInheritedClass {
+   color: #9B5C2E;
+   font-style: italic;}
+   pre.sunburst  .MarkupComment {
+   color: #F67B37;
+   font-style: italic;}
+   pre.sunburst  .MarkupBold {
+   font-weight: bold;
+   color: #E9C062;}
+   pre.sunburst  .CssId {
+   color: #8B98AB;}
+   pre.sunburst  .CssPseudoClass {
+   color: #8F9D6A;}
+   pre.sunburst  .JCast {
+   color: #676767;
+   font-style: italic;}
+   pre.sunburst  .StringVariable {
+   color: #8A9A95;}
+   pre.sunburst  .String {
+   color: #65B042;}
+   pre.sunburst  .Keyword {
+   color: #E28964;}
+   pre.sunburst  {
+   background-color: #000000;
+   color: #F8F8F8;}
+   pre.sunburst  .LogEntry {
+   background-color: #C7C7C7;}
+   pre.sunburst  .MarkupItalic {
+   color: #E9C062;
+   font-style: italic;}
+   pre.sunburst  .CssPropertyName {
+   color: #C5AF75;}
+   pre.sunburst  .Namespaces {
+   color: #E18964;}
+   pre.sunburst  .DoctypeXmlProcessing {
+   color: #494949;}
+   pre.sunburst  .InvalidDeprecated {
+   color: #FD5FF1;
+   font-style: italic;}
+   pre.sunburst  .Variable {
+   color: #3E87E3;}
+   pre.sunburst  .Entity {
+   color: #89BDFF;}
+   pre.sunburst  .Comment {
+   color: #AEAEAE;
+   font-style: italic;}
+.tree {
+min-height:20px;
+padding:19px;
+margin-bottom:20px;
+background-color:#fbfbfb;
+border:1px solid #999;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+border-radius:4px;
+-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)}
+.tree li {
+list-style-type:none;
+margin:0;
+padding:10px 5px 0 5px;
+position:relative}
+.tree li::before,.tree li::after {
+content:'';
+left:-20px;
+position:absolute;
+right:auto}
+.tree li::before {
+border-left:1px solid #999;
+bottom:50px;
+height:100%;
+top:0;
+width:1px}
+.tree li::after {
+border-top:1px solid #999;
+height:20px;
+top:25px;
+width:25px}
+.tree li span {
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+border:1px solid #999;
+border-radius:5px;
+display:inline-block;
+padding:3px 8px;
+text-decoration:none}
+.tree li.parent_li>span {
+cursor:pointer}
+.tree>ul>li::before, .tree>ul>li::after {
+border:0}
+.tree li:last-child::before {
+height:30px}
+.tree li.parent_li>span:hover,
+.tree li.parent_li>span:hover+ul li span {
+background:#eee;
+border:1px solid #94a0b4;
+color:#fff}
+#standalone {
+line-height: 150;
+}
+#standalone code {
+background-color: rgba(0, 0, 0, 0.1);
+}
+#standalone h1 {
+margin-top: 40px;
+margin-bottom: 10px;
+line-height: 125;
+}
+html {
+width: 100;
+background-color: #131212;
+padding-top: 10px;
+font-family: Helvetica, sans-serif;
+}
+code {
+font-family: monospace;
+font-size: 120;
+padding: 0 3px;
+border: 1px solid rgba(0, 0, 0, 0.1);
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-khtml-border-radius: 3px;
+border-radius: 3px;
+}
+a {
+color: #6666cc;
+text-decoration: none;
+}
+a:hover {
+text-decoration: underline;
+}
+a.download {
+text-decoration: none;
+display: block;
+color: white;
+margin: 20px auto 0;
+width: 300px;
+height: 45px;
+line-height: 45px;
+font-size: 20px;
+text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
+text-align: center;
+background-image: -webkit-gradient(linear, 50, 50, color-stop(0, #c26c07));
+background-image: -webkit-linear-gradient(#f38709, #c26c07);
+background-image: -moz-linear-gradient(#f38709, #c26c07);
+background-image: -o-linear-gradient(#f38709, #c26c07);
+background-image: -ms-linear-gradient(#f38709, #c26c07);
+background-image: linear-gradient(#f38709, #c26c07);
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+-ms-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+}
+.download-more,
+a.download-runtime {
+display: block;
+margin-top: 5px;
+font-size: 12px;
+text-align: center;
+}
+a.more-info {
+padding-top: 8px;
+padding-bottom: 8px;
+text-decoration: none;
+display: block;
+color: white;
+margin: 10px 0 0 450px;
+text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
+text-align: center;
+background-color: #c26c07;
+background-image: -webkit-gradient(linear, 50, 50, color-stop(0, #c26c07));
+background-image: -webkit-linear-gradient(#f38709, #c26c07);
+background-image: -moz-linear-gradient(#f38709, #c26c07);
+background-image: -o-linear-gradient(#f38709, #c26c07);
+background-image: -ms-linear-gradient(#f38709, #c26c07);
+background-image: linear-gradient(#f38709, #c26c07);
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+-ms-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+}
+a.more-info:hover {
+background-color: #905005;
+background-image: -webkit-gradient(linear, 50, 50, color-stop(0, #905005));
+background-image: -webkit-linear-gradient(#c26c07, #905005);
+background-image: -moz-linear-gradient(#c26c07, #905005);
+background-image: -o-linear-gradient(#c26c07, #905005);
+background-image: -ms-linear-gradient(#c26c07, #905005);
+background-image: linear-gradient(#c26c07, #905005);
+}
+a.issue-tracker {
+display: block;
+margin-top: 5px;
+font-size: 12px;
+text-align: right;
+}
+.intro {
+width: 100;
+}
+#body {
+display: -ms-flexbox;
+display: -webkit-box;
+display: -moz-box;
+-ms-flex-direction: column;
+-webkit-box-orient: vertical;
+-moz-box-orient: vertical;
+-ms-flex-align: center;
+-webkit-box-align: center;
+-moz-box-align: center;
+width: 100;
+}
+#contents {
+display: -ms-flexbox;
+display: -webkit-box;
+display: -moz-box;
+-ms-flex-direction: column;
+-webkit-box-orient: vertical;
+-moz-box-orient: vertical;
+-ms-flex-align: justify;
+-webkit-box-align: justify;
+-moz-box-align: justify;
+background-color: rgba(255, 255, 255, 1);
+-moz-box-shadow: 0 0 10px #723600;
+-webkit-box-shadow: 0 0 10px #723600;
+-o-box-shadow: 0 0 10px #723600;
+box-shadow: 0 0 10px #723600;
+padding: 20px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+-ms-border-radius: 10px;
+-khtml-border-radius: 10px;
+border-radius: 10px;
+width: 725px;
+position: relative;
+top: -20px;
+z-index: 2;
+}
+#contents h1 {
+color: #3f1e00;
+margin-bottom: 0;
+}
+#intro {
+background: rgba(0, 0, 0, 0.1);
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+-ms-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+padding: 10px 10px;
+color: #723600;
+font-size: 18px;
+line-height: 24px;
+}
+#intro p {
+margin: 0;
+}
+#intro p + p {
+margin-top: 10px;
+}
+#intro strong {
+color: #582a00;
+}
+#header {
+z-index: 1;
+margin-bottom: 20px;
+height: 200px;
+overflow: hidden;
+}
+#header h1 {
+font-size: 22px;
+text-align: right;
+padding-right: 43px;
+color: #582a00;
+}
+ #callout img {		
+ position: absolute;		 
+ top: -170px;			 
+ left: -90px;			 
+ }				 
+				 
+ #footer {			 
+ -moz-box-sizing: border-box;	 
+ -webkit-box-sizing: border-box; 
+ -ms-box-sizing: border-box;	 
+ box-sizing: border-box;	 
+ display: -ms-flexbox;		 
+ display: -webkit-box;		 
+ display: -moz-box;		 
+ -ms-flex-direction: row;	 
+ -webkit-box-orient: horizontal;	
+ -moz-box-orient: horizontal;		
+ -ms-flex-align: center;		
+ -webkit-box-align: center;		
+ -moz-box-align: center;		
+ -webkit-box-pack: justify;		
+ -moz-box-pack: justify;		
+ padding: 8px 16px;			
+ background-color: rgba(0, 0, 0, 0.1);	
+ width: 100;				
+ margin-top: 25px;			
+ }					
+					
+ #footer img:first-child {		
+ -moz-box-shadow: 0 0 5px blue;	
+ -webkit-box-shadow: 0 0 5px blue;	
+ -o-box-shadow: 0 0 5px blue;		
+ box-shadow: 0 0 5px blue;		
+ }					
+					
+ #footer img:last-child {		
+ margin-top: -20px;			
+ margin-right: -20px;			
+ }					
+					
+ #footer .spacer {			
+ -webkit-box-flex: 1;			
+ -moz-box-flex: 1;			
+ }					
+					
+ #footer img {				
+ display: block;			
+ }					
+					
+ #footer #navigation {			
+ display: -ms-flexbox;			
+ display: -webkit-box;			
+ display: -moz-box;			
+ -ms-flex-direction: column;		
+ -webkit-box-orient: vertical;		
+ -moz-box-orient: vertical;		
+ -ms-flex-align: center;		
+ -webkit-box-align: center;		
+ -moz-box-align: center;		
+ }					
+					
+ #footer #navigation p {		
+ font-family: Helvetica, sans-serif;	
+ color: #336666;			
+ font-size: 16px;			
+ margin: 0;				
+ }					
+					
+ #footer #navigation p a {		
+ text-decoration: none;		
+ color: #0e3f54;			
+ }					
+					
+ .contents {				
+ width: 725px;				
+ }					
+					
+ h2 {					
+ font-size: 20px;			
+ padding: 5px;				
+ margin-top: 24px;			
+ color: #582a00;			
+ border-bottom: 3px solid #8b4200;	
+ width: 100;				
+ -moz-box-sizing: border-box;		
+ -webkit-box-sizing: border-box;	
+ -ms-box-sizing: border-box;		
+ box-sizing: border-box;		
+ }					
+					
+ h3 {					
+ font-size: 18px;			
+ padding: 5px;				
+ margin-top: 12px;			
+ color: #582a00;			
+ width: 100;				
+ -moz-box-sizing: border-box;		
+ -webkit-box-sizing: border-box;	
+ -ms-box-sizing: border-box;		
+ box-sizing: border-box;		
+ }					
+					
+ h3 code {				
+ font-size: inherit;			
+ }					
+					
+ ul.bullet {				
+ display: -ms-flexbox;			
+ display: -webkit-box;			
+ display: -moz-box;			
+ -ms-flex-direction: row;		
+ -webkit-box-orient: horizontal;	
+ -moz-box-orient: horizontal;		
+ -ms-flex-align: center;		
+ -webkit-box-align: center;		
+ -moz-box-align: center;		
+ -webkit-box-pack: justify;		
+ -moz-box-pack: justify;		
+ }					
+					
+ ul.bullet a {				
+ margin-left: 0;			
+ margin-right: 10px;			
+ -webkit-box-flex: 1;			
+ -moz-box-flex: 1;			
+ }					
+					
+ ul.bullet a:last-child {		
+ margin-right: 0;			
+ }					
+					
+ .bullet {				 
+ width: 100;				 
+ padding: 8px 15px;			 
+ -moz-box-sizing: border-box;		 
+ -webkit-box-sizing: border-box;	 
+ -ms-box-sizing: border-box;		 
+ box-sizing: border-box;		 
+ display: -ms-flexbox;			 
+ display: -webkit-box;			 
+ display: -moz-box;			
+ -ms-flex-direction: column;		
+ -webkit-box-orient: vertical;		
+ -moz-box-orient: vertical;		
+ -ms-flex-align: justify;		
+ -webkit-box-align: justify;		
+ -moz-box-align: justify;		
+ }					
+					
+ .bullet .description {		
+ width: 100;				
+ margin-right: 16px;			
+ color: #3f1e00;			
+ line-height: 24px;			
+ margin-bottom: 8px;			
+ }					
+					
+ .bullet .how {			
+ display: -ms-flexbox;			
+ display: -webkit-box;			
+ display: -moz-box;			
+ -ms-flex-direction: column;		
+ -webkit-box-orient: vertical;		
+ -moz-box-orient: vertical;		
+ -ms-flex-align: justify;		
+ -webkit-box-align: justify;		
+ -moz-box-align: justify;		
+ -webkit-box-flex: 1;			
+ -moz-box-flex: 1;			
+ line-height: 24px;			
+ }					
+					
+ .bullet .notes {			
+ font-size: 90;			
+ line-height: 150;			
+ margin-top: 15px;			
+ margin-bottom: 8px;			
+ padding-right: 4px;			
+ padding-left: 4px;			
+ color: #582a00;			
+ }					
+					
+ .bullet .notes + a {			
+ margin-top: 10px;			
+ }					
+					
+ .bullet .notes + pre {		
+ margin-top: 10px;			
+ }					
+					
+ .bullet .notes + .description {	
+ margin-top: 20px;			
+ }					
+					
+ .bullet pre {				
+ -webkit-box-flex: 1;			
+ -moz-box-flex: 1;			
+ margin: 0;					
+ }						
+						
+ .bullet code {				
+ background-color: rgba(0, 0, 0, 0.1);		
+ }						
+						
+ pre {						
+ -moz-border-radius: 5px;			
+ -webkit-border-radius: 5px;			
+ -o-border-radius: 5px;			
+ -ms-border-radius: 5px;			
+ -khtml-border-radius: 5px;			
+ border-radius: 5px;				
+ }						
+						
+ .bullet:nth-child(even) {			
+ background-color: rgba(0, 0, 0, 0.1);		
+ border-top: 1px solid rgba(0, 0, 0, 0.1);	
+ border-bottom: 1px solid rgba(0, 0, 0, 0.1);	
+ }						
+						
+ .bullet:not(:nth-of-type(1)) {		
+ padding-top: 15px;				
+ }						
+						
+ .bullet {					
+ padding-bottom: 25px;				
+ }						
+						
+ #credits p {		
+ text-align: center;	
+ font-size: 8pt;	
+ color: #668493;	
+ }			
+			
+ #credits p a {	
+ color: #2c596b;	
+ }			
+			
+ #github img {		
+ position: absolute;	
+ top: 0;		
+ right: 0;		
+ border: 0;		
+ }			
+			
+ #header-segment {	
+ display: inline;	
+ padding-left: auto;	
+ padding-right: auto;	
+ }			
+			
+ #versions {		
+ position: absolute;	
+ top: 0;		
+ left: 0;		
+ padding: 0.4em;	
+ background: rgba(0, 0, 0, 0.1);		
+ -moz-border-radius-bottomright: 10px;		
+ -webkit-border-bottom-right-radius: 10px;	
+ -o-border-bottom-right-radius: 10px;		
+ -ms-border-bottom-right-radius: 10px;		
+ -khtml-border-bottom-right-radius: 10px;	
+ border-bottom-right-radius: 10px;		
+ }						
+						
+ #versions a {					
+ text-decoration: none;			
+ color: #0e3f54;				
+ padding: 0.1em 0.25em;			
+ }						
+						
+ #versions a.current {				
+ font-weight: bold;				
+ }						
+						
+ .try-handlebars {				
+ margin-top: 1em;				
+ }						
+						
+ .try-handlebars textarea, .try-handlebars pre.output {
+ -moz-border-radius: 4px;				
+ -webkit-border-radius: 4px;				
+ -o-border-radius: 4px;				
+ -ms-border-radius: 4px;				
+ -khtml-border-radius: 4px;				
+ border-radius: 4px;					
+ border: 1px solid #444444;				
+ color: #444444;					
+ font-family: monospace;				
+ min-height: 8em;					
+ padding: 10px 2;					
+ resize: vertical;					
+ width: 95;						
+ }							
+							
+ .try-handlebars pre.output {				
+ background: #eeeeee;					
+ }							
+</style>
+<title>D8M</title>
+<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1' />
+</head>
+<div id="body">
+<div id="contents">
+ <div id="intro">
+ <p>
+   Block helpers make it possible to define custom iterators and
+other functionality that can invoke the passed block with a new
+context.
+</p> "</div>
+<div class="contents">
+<div class="bullet">
+<h1 id="reference"># ZEDBOARD</h1>
+<h2 id="base">Project : D8M</h2>
+<h3 id="base-compile"><code>LOGIC REGENRATION FILES AUTOMATION</code></h3>
+<li><code>Project Created  OS</code>:Microsoft Windows [Version 10.0.17134.165] </li>
+<li><code>File</code>:SET_PROJECT.bat </li>
+<li><code>Source</code>:<a href='#SET_PROJECT'><b>Source Code below</b></a></li>
+<div class="contents">
+<div class="bullet">
+<div class="description">Compiles a template so it can be executed
+immediately.</div>	
+<pre class="sunburst">Handlebars.registerDecorator({
+<span class="Entity">foo</span>: <span class="Storage">function</span>() {},
+<span class="Entity">bar</span>: <span class="Storage">function</span>() {}});</pre> </div>
+<h3 id="base-compile"><code>VIVADO:2017.2</code></h3>
+<h2 id="base-compile"><code>BOARD: #ZEDBOARD </code></h2>
+<div class="tree">
+<ul>
+<li><span><i class="icon-folder-open"></i><a href="/BOARD_PROJECTS/ZEDBOARD/">ZEDBOARD</a></span><--BOARD
+<ul>
+<li><span><i class="icon-minus-sign"></i><a href="/BOARD_PROJECTS/ZEDBOARD/D8M">D8M</a></span><--PROJECT
+<ul><li><span><i class="icon-leaf"></i>ip</span> <a href="">Goes somewhere</a></li>
+<li><span><i class="icon-minus-sign"></i>zynq_soc</span> <a href="/BOARD_PROJECTS/ZEDBOARD/D8M/zynq_soc">Goes somewhere</a>
+<ul>
+<li><span><i class="icon-minus-sign"></i>project</span> <a href="">Goes somewhere</a>
+<ul>
+<li><span><i class="icon-leaf"></i>Technology</span> <a href="">Goes somewhere</a></li>
+<li><span><i class="icon-leaf"></i>Technology</span> <a href="">Goes somewhere</a></li>
+</ul>
+</li>
+<li><span><i class="icon-leaf"></i>Build Instructions</span> <a href="">Goes somewhere</a></li>
+<li><span><i class="icon-leaf"></i>Spec</span> <a href="">Goes somewhere</a></li>
+</ul>
+</li>
+<li><span><i class="icon-leaf"></i>ip_repo</span> <a href="">Goes somewhere</a></li>
+<li><span><i class="icon-leaf"></i>Initial_Time_Stamp_"2018-07-22_00-32-58".txt</span> <a href="">Goes somewhere</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<table class='center'>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">
+Generated Folders Tree
+<pre class="sunburst">
+ZEDBOARD
+<span class="CssPropertyValue">      |</span>
+<span class="CCCPreprocessorDirective">      |D8M</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span>
+<span class="Keyword">      |</span><span class="Keyword">  |ip_repo</span>
+<span class="Keyword">      |</span><span class="Keyword">  |ip</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |</span>
+<span class="DiffChanged">      |</span><span class="Keyword">  |</span><span class="Keyword">  |Initial_Time_Stamp_"2018-07-22_00-32-58".txt</span>
+<span class="Keyword">      |</span><span class="Keyword">  |zynq_soc</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |doc</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |project</span>
+<span class="Keyword">      |</span><span class="Keyword">  |project</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |</span>
+<span class="Keyword">      |</span><span class="Keyword">  |</span><span class="Keyword">  |readme.txt</span>
+<span class="Keyword">      |</span><span class="Keyword">  |readme.txt</span>
+</code></pre></pre></figure>
+</table>
+	<h1 id="reference">Reference</h1>
+	<h2 id="base">Base</h2>
+	<h3 id="base-compile"><code>Handssssssssslebars.compile(template,options)</code></h3>
+	<div class="contents">
+	<div class="bullet">
+	<div class="description"> Compiles a template so it can be executed immediately. 
+	Supports a variety of options that alter how the template executes
+	<ul>
+	<li><code>data</code>:  to false to disable <code>@data</code> tracking. </li>
+	<li><code>compat</code>:  to true to enable recursive field lookup. </li>
+	<li><code>Handlssssssssssssssssssssssebars.registerHelper('link',
+	 function(object) { var url = Handlebars.escapeExpression(object.url),			   
+	 text = Handlebars.escapeExpression(object.text); return new				   
+	 Handlebars.SafeString( text								   
+	  </a> ); });</code>. </li>								   
+	<li><code>knownHelpersOnly</code>:  to true to allow further optimzations based on 	   
+	the known helpers list. </li>								   
+	<li><code>trackIds</code>: Set to true to include the id names used to resolve 		   
+	parameters  helpers. </li>								   
+	<li><code>noEscape</code>:  to true to not HTML escape any content. </li>		   
+	<li><code>strict</code>: Run in strict mode. In this mode, templates will throw rather 	   
+	than silently ignore missing fields. This has the side effect of disabling inverse 	   
+	operatins such as <code>{{^foo}}{{/foo}}</code> unless fields are explicitly included 	   
+	in the 											   
+	source object. </li>									   
+	<li><code>assumeObjects</code>: Removes object existence checks when traversing paths. 	   
+	This is a subset of <code>strict</code> mode that generates optimized templates when 	   
+	the data 										   
+	inputs are known to be safe. </li>							   
+	<li><code>preventIndent</code>: By default an indented partial-call causes the output 	   
+	of the whole partial being indented by the same amount. This can lead to unexpected 	   
+	behavior when 										   
+	the partial writes <code>pre</code>-ip. Setting this option to <code>true</code> 	   
+	will disable 										   
+	the auto-indent feature. </li>								   
+	<li><code>ignoreStandalone</code>: Disables standalone tag removal when 		   
+	 to <code>true</code>. When set, blocks and partials that are on their own line 	   
+	will not remove the whitespace on that line. </li>					   
+	<li><code>explicitPartialContext</code>: Disables implicit context  partials. 	   
+	When enabled, partials that are  passed a context value will execute against an 	   
+	empty object. </li>									   
+	</ul>
+	</div>
+	</div>
+	</div>
+<h3 id="data-level"><code>@level</code></h3>
+	<h3 id="base-precompile"><code>Handlebars.precompile(template,options)</code></h3>
+	<div class="contents">
+	<div class="bullet">
+	<div class="description"> Precompiles a given template so it can be sent to the 
+	client and executed without compilation. </div> <pre class="sunburst">
+	<span class="Storage">var</span> templateSpec <span class="Keyword">=</span> Handlebars.precompile</pre>
+	<div class="bullet">
+	<div class="description"> Key name for the current iteration step. Set by the <code>each</code> helper when iterating over objects. </div> <pre class="sunburst">
+	<span class="EmbeddedSourceBright">{{#each array}}</span>
+	<span class="EmbeddedSourceBright">{{@key}}</span>
+	<span class="EmbeddedSourceBright">{{/each}}</span></pre> 		 
+<div
+class
+notes">
+Also
+supports
+registering
+multiple
+decorators
+at
+once.
+</div>
+
+<br />
+<div class='center'>
+<div class='top'><a href='#'>TOP</a></div>
+<a name='SET_PROJECT'><h2>D8M Document Source</h2></a>
+<br /><br />
+<font color='BLACK'>
+</div>
+<div class='sourcebatch'><pre><xmp>
+</xmp> 
+</pre></div>
+</font>
+</body>
+</html>
